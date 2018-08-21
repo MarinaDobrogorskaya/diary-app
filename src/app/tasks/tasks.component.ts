@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {TaskService} from './task.service';
 import {FormControl, Validators} from '@angular/forms';
 import {Task} from './task/task';
@@ -16,6 +16,7 @@ export class TasksComponent implements OnInit {
   public name = new FormControl('', Validators.required);
   public tasks: Task[] = [];
   public sectionHeight: number;
+  public selectedTaskId: string;
   constructor(private taskService: TaskService,
               private stateService: TaskStateShareService) { }
   ngOnInit() {
@@ -38,8 +39,9 @@ export class TasksComponent implements OnInit {
     this.name.reset();
   }
   onSelectTask(id: string) {
+    this.selectedTaskId = id;
     this.stateService.selectTask(id);
-    console.log('Was selected ', id);
+    console.log('TasksComponent >  Was selected task: ', id);
   }
   onRemoveTask(id: string): void {
     this.stateService.deleteTask(id);

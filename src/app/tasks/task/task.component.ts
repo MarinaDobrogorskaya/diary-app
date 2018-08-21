@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Task} from './task';
 
 @Component({
@@ -6,12 +6,10 @@ import {Task} from './task';
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss']
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent {
   @Input() task: Task;
   @Output() deleted = new EventEmitter<string>();
   constructor() { }
-  ngOnInit() {
-  }
   onDelete(id) {
     this.deleted.emit(id);
   }

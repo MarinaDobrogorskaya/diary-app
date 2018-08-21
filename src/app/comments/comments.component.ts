@@ -4,6 +4,7 @@ import {Subscription} from 'rxjs';
 import {TaskStateShareService} from '../common/task-state-share.service';
 import {FormControl, Validators} from '@angular/forms';
 import {TaskService} from '../tasks/task.service';
+import {Task} from '../tasks/task/task';
 
 @Component({
   selector: 'app-comments',
@@ -13,24 +14,24 @@ import {TaskService} from '../tasks/task.service';
 })
 export class CommentsComponent implements OnInit, OnDestroy {
   public taskId: string;
-  public comments: Comment[];
+  public comments: Comment[] = [];
   public sectionHeight: number;
-  public text = new FormControl('', Validators.required);
+  public text = new FormControl({value: '', disabled: true}, Validators.required);
   private selectedTaskSubscription: Subscription;
   private deletedTaskSubscription: Subscription;
   constructor(private stateService: TaskStateShareService,
-              private taskService: TaskService) {
-  }
+              private taskService: TaskService) {}
   ngOnInit(): void {
     this.selectedTaskSubscription = this.stateService.taskSelected$
       .subscribe(id => {
-        console.log('Get id: ', id);
+        console.log('CommentsComponent > Got id: ', id);
         this.taskId = id;
+        this.text.enable();
         this.comments = this.taskService.getTask(id).comments;
       });
     this.deletedTaskSubscription = this.stateService.taskDeleted$
       .subscribe(id => {
-        console.log('Delete comments: ', id)
+        console.log('CommentsComponent > Deleted task id: ', id);
         this.taskId = null;
         this.comments = [];
       });
@@ -46,8 +47,8 @@ export class CommentsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.selectedTaskSubscription.unsubscribe();
   }
-  private addComment (id) {
-    const changedTask = this.taskService.getTask(id);
+  private addComment (id: string) {
+    const changedTask: Task = this.taskService.getTask(id);
     changedTask.comments.push({
       img: '../../assets/icons/user.png',
       text: this.text.value

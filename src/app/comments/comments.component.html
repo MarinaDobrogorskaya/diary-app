@@ -1,5 +1,11 @@
 <section class="border-0 shadow" [ngStyle]="{'max-height.px': sectionHeight}">
   <h2>Comments #{{taskId}}</h2>
+  <h4 class="no-content mb-3 p-2 border border-info rounded" *ngIf="!taskId">
+    Please, select task from list</h4>
+  <div class="no-content mb-3 p-2 border border-info rounded" *ngIf="!comments.length && taskId">
+    <h4>No comments</h4>
+    <h5 class="text-muted">Please, add some new comments.</h5>
+  </div>
   <div class="list">
     <ul class="list-group list-group-flush">
       <li class="list-group-item pl-0 pr-0" *ngFor="let comment of comments">

@@ -19,6 +19,7 @@ export class TaskService {
   getTask(id: string): Task {
     return JSON.parse(localStorage.getItem(id));
   }
+  // noinspection JSMethodCanBeStatic
   updateTask(id: string, task: Task): void {
     localStorage.setItem(id, JSON.stringify(task));
   }

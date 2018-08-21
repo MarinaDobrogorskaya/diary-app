@@ -1,16 +1,24 @@
 <section class="border-0 shadow" [ngStyle]="{'max-height.px': sectionHeight}">
-  <h2>Items</h2>
-  <div class="form-group d-flex mb-1">
-    <input class="form-control" placeholder="Enter name"
-           [formControl]="name">
-    <button class="btn" (click)="onAddTask()" [disabled]="name.invalid">Add new</button>
+  <div class="head">
+    <h2>Items</h2>
+    <div class="form-group d-flex mb-1">
+      <input class="form-control" placeholder="Enter name"
+             [formControl]="name">
+      <button class="btn" (click)="onAddTask()" [disabled]="name.invalid">Add new</button>
+    </div>
+    <small class="form-text text-info" *ngIf="name.invalid">You need to name your item</small>
   </div>
-  <small class="form-text text-info" *ngIf="name.invalid">You need to name your item</small>
   <div class="list">
     <ul class="list-group list-group-flush">
-      <li class="list-group-item pr-0 pl-0" *ngFor="let task of tasks" (click)="onSelectTask(task.id)">
+      <li class="list-group-item" *ngFor="let task of tasks"
+          [ngClass]="selectedTaskId === task.id ? 'active-tab' : 'none'"
+          (click)="onSelectTask(task.id)">
         <app-task [task]="task" (deleted)="onRemoveTask($event)"></app-task>
       </li>
     </ul>
+  </div>
+  <div class="no-content mt-3 p-2 border border-info rounded" *ngIf="!tasks.length">
+    <h4>No tasks</h4>
+    <h5 class="text-muted">Please, add some new task.</h5>
   </div>
 </section>

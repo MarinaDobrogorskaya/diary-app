@@ -1,7 +1,9 @@
 section {
   margin: 24px 16px 0 24px;
-  padding: 24px;
-  h2 {
+  .head {
+    padding: 24px;
+  }
+  h2, h4, h5 {
     font-weight: lighter;
     margin-bottom: 16px;
   }
@@ -16,8 +18,12 @@ section {
   .list {
     max-height: 530px;
     overflow-y: auto;
+    padding-bottom: 16px;
     li {
       cursor: pointer;
+    }
+    .active-tab {
+      border-left: 3px solid firebrick;
     }
   }
 }

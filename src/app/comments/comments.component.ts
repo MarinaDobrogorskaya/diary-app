@@ -16,6 +16,7 @@ export class CommentsComponent implements OnInit, OnDestroy {
   public taskId: string;
   public comments: Comment[] = [];
   public sectionHeight: number;
+  public imgUrl = 'assets/icons/user.png';
   public text = new FormControl({value: '', disabled: true}, Validators.required);
   private selectedTaskSubscription: Subscription;
   private deletedTaskSubscription: Subscription;
@@ -50,7 +51,7 @@ export class CommentsComponent implements OnInit, OnDestroy {
   private addComment (id: string) {
     const changedTask: Task = this.taskService.getTask(id);
     changedTask.comments.push({
-      img: '../../assets/icons/user.png',
+      img: this.imgUrl,
       text: this.text.value
     });
     this.taskService.updateTask(id, changedTask);

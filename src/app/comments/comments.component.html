@@ -1,0 +1,16 @@
+<section class="border-0 shadow" [ngStyle]="{'max-height.px': sectionHeight}">
+  <h2>Comments #{{taskId}}</h2>
+  <div class="list">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item pl-0 pr-0" *ngFor="let comment of comments">
+        <app-comment [comment]="comment"></app-comment>
+      </li>
+    </ul>
+  </div>
+  <div class="form-group d-flex justify-content-between pt-2">
+    <img class="icon" src="../../assets/icons/user.png">
+    <textarea class="form-control" placeholder="Enter your comment" rows="5"
+              [formControl]="text"
+              (keydown)="onCtrlEnterPressed($event)"></textarea>
+  </div>
+</section>

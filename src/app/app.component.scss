@@ -1,0 +1,15 @@
+.wrap, .row {
+  height: 100%;
+  .side-panel {
+    height: 100%;
+    background-color: #2B2F3E;
+    color: white;
+    h2 {
+      font-weight: lighter;
+      margin-left: 16px;
+      margin-top: 16px;
+    }
+    p { margin-left: 16px }
+  }
+}
+

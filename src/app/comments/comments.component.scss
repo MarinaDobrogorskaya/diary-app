@@ -1,0 +1,21 @@
+section {
+  margin: 24px 24px 0 16px;
+  padding: 24px;
+  h2 {
+    font-weight: lighter;
+  }
+  .form-group {
+    border-top: 1px solid lightgrey;
+    .form-control {
+      max-width: 80%;
+    }
+    .icon {
+      width: 100px;
+      height: 100px;
+    }
+  }
+  .list {
+    max-height: 440px;
+    overflow-y: auto;
+  }
+}

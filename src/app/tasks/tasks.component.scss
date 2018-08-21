@@ -1,0 +1,23 @@
+section {
+  margin: 24px 16px 0 24px;
+  padding: 24px;
+  h2 {
+    font-weight: lighter;
+    margin-bottom: 16px;
+  }
+  .form-group {
+    button {
+      width: 35%;
+      background-color: #27CCC0;
+      color: white;
+      margin-left: 8px;
+    }
+  }
+  .list {
+    max-height: 530px;
+    overflow-y: auto;
+    li {
+      cursor: pointer;
+    }
+  }
+}

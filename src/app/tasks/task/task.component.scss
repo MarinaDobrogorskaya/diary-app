@@ -1,0 +1,16 @@
+.task {
+  p {
+    max-width: 70%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  span {
+    margin: 0 8px;
+    background-color: #27CCC0;
+    color: white;
+  }
+  button {
+    width: 20%;
+  }
+}
